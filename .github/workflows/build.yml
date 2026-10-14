@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: OfflineThreeKingdoms-APK
-          path: OfflineThreeKingdomsPrototype/app/build/outputs/apk/debug/*.apk
+          path: OfflineThreeKingdomsPrototype/OfflineThreeKingdomsPrototype/app/build/outputs/apk/debug/*.apk
