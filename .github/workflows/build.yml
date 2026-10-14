@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -6,20 +7,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: OfflineThreeKingdomsPrototype
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+
       - name: Build APK
         run: gradle assembleDebug
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: OfflineThreeKingdoms-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: OfflineThreeKingdomsPrototype/app/build/outputs/apk/debug/*.apk
